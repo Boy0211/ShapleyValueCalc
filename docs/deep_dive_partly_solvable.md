@@ -112,6 +112,8 @@ The same pattern applies to other games:
 - **Voting systems** that aren't weighted voting games, such as double majorities or multiple chambers: fit the closest weighted voting game, solve it exactly by dynamic programming, and sample the residual.
 - **Games with nearly identical players:** cluster players into types, solve the typed game exactly, and sample the residual.
 
+**Follow-up on the repo's real networks:** see [`network_treewidth_results.md`](network_treewidth_results.md). The Krebs network turns out to have treewidth exactly 5 and has already been solved exactly (van der Zanden et al. 2023), so the idea only matters for networks whose treewidth is out of reach.
+
 ### Why this could matter
 
 - It gives the OR and network games a method that uses their structure, which linear surrogates can't. This supports H5 in the research question.
@@ -148,7 +150,7 @@ The `Structured` class in `mycode/oldmethods.py` appears to implement the struct
 
 ## Risks
 
-- The treewidth of real terrorist networks may stay high even after deleting a few edges; I haven't measured it for Krebs or Zerkani.
+- For the repo's networks the opposite problem showed up: Krebs has treewidth 5, low enough to solve exactly, so there is nothing left to estimate. Zerkani has not been measured (its data isn't public). See [`network_treewidth_results.md`](network_treewidth_results.md).
 - The control-variate gain depends on how close the surrogate is to the game. The toy example shows that a poor surrogate gives little benefit, and a poor `β` makes things worse.
 - The general framework of Witter et al. can be argued to cover structured surrogates already. The contribution must be framed as the OR-specific surrogate classes and the sparsification problem, not the control-variate principle itself.
 - Most sources were read through abstracts and search summaries, not full papers.
